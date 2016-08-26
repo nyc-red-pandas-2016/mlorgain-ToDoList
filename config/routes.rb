@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  root 'lists#index'
+  root 'static#index'
   resources :tasks
   resources :lists
   resources :users
