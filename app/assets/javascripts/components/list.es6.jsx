@@ -1,8 +1,13 @@
 class List extends React.Component {
   render() {
-    var data = this.props.data;
+    var listItem = this.props.data;
     return (
-      <li className="list-item"> {data.title} </li>
+      <div className="list-item">
+        <li>
+          <CheckBox />
+          {listItem.title}
+        </li>
+      </div>
     );
   }
 }

@@ -2,19 +2,18 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      list_items: []
+      listItems: []
     }
   };
 
   componentDidMount() {
     $.ajax({
-      url: "/lists",
-      type: "GET"
-    }).done((response) => {
+      url: "/lists"
+    }).done(function(response) {
       this.setState({
-        list_items: response
+        listItems: response
       });
-    })
+    }.bind(this))
   }
 
   render(){
@@ -22,12 +21,12 @@ class App extends React.Component {
       <div className="container">
         <h1>ToDoList</h1>
         <section id="list-item-container">
-          <h3>Lists</h3>
+          <div className="list-heads">
+            <h2>Lists</h2>
+            <h2>New List</h2>
+          </div>
             <ul>
-              { this.state.list_items.map( function (list, i) {
-                 return ( <List key={i} data={list} />)
-                }
-              )}
+              { this.state.listItems.map( (list, i) => ( <List key={i} data={list} />))}
             </ul>
         </section>
       </div>
