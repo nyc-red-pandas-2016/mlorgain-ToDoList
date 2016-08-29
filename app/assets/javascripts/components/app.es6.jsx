@@ -2,7 +2,8 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      listItems: []
+      listItems: [],
+      showForm: false
     }
   };
 
@@ -14,6 +15,18 @@ class App extends React.Component {
         listItems: response
       });
     }.bind(this))
+  };
+
+  handleSubmit(e) {
+    e.preventDefault();
+    var text = ReactDOM.findDOMNode(this.refs.textInput).value.trim();
+
+  };
+
+  onClick: function() {
+    this.setState({
+      showForm: true
+    });
   }
 
   render(){
@@ -23,7 +36,10 @@ class App extends React.Component {
         <section id="list-item-container">
           <div className="list-heads">
             <h2>Lists</h2>
-            <h2>New List</h2>
+            <h2>New List onClick={this.onClick}</h2>
+            <div>
+              <NewListForm />
+            </div>
           </div>
             <ul>
               { this.state.listItems.map( (list, i) => ( <List key={i} data={list} />))}
